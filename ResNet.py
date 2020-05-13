@@ -1,6 +1,7 @@
 import torch.nn as nn
 import torch.nn.functional as F
 import torch
+
 from Bottleneck import *
 
 
@@ -21,9 +22,8 @@ class ResNet(nn.Module):
 
         x = self.bottleneck1(x)
 
-        # x = self.pool_end(x)
-
         x = x.view(-1, 256 * 59 * 39)
+
 
         x = self.relu(self.fc(x))
 

@@ -20,6 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f95eb9d-1c89-43a4-a8ff-3dc33c0673dc" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Bottleneck.py" beforeDir="false" afterPath="$PROJECT_DIR$/Bottleneck.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CVData.py" beforeDir="false" afterPath="$PROJECT_DIR$/CVData.py" afterDir="false" />
@@ -413,6 +414,13 @@
       <change beforePath="$PROJECT_DIR$/net.pth" beforeDir="false" afterPath="$PROJECT_DIR$/net.pth" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/Bottleneck.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ResNet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Net.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Trainer.py" afterDir="false" />
+>>>>>>> 74a2dbba9ba2e0a42e1aebc6730cd04041db43ab
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
