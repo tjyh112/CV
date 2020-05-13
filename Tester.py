@@ -1,5 +1,5 @@
 from Dao_CVData import *
-from Net import *
+from AlexNet import *
 from utils import *
 
 class Tester:
@@ -109,7 +109,7 @@ if __name__ == '__main__':
     #     os.remove("./dataset/test/predictions/*.jpg")
     #     os.rmdir(("./dataset/test/predictions/"))
     classes = ['Car', 'Motor', 'Background', 'Face', 'Airplane', 'Leaf']
-    model = Net()
+    model = AlexNet()
     model_PATH = './net.pth'
     model.load_state_dict(torch.load(model_PATH))
     tester = Tester(path='./dataset/test', model=model, classes=classes)

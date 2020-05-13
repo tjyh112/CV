@@ -1,7 +1,7 @@
 from torch.utils.data import Dataset
 from PIL import Image
 from skimage.io import imread_collection
-import cv2
+# import cv2
 import numpy as np
 import torch
 from utils import *

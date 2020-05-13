@@ -1,8 +1,9 @@
 
 from CVData import *
-from Net import *
+from AlexNet import *
 import torch.optim as optim
 from Dao_CVData import *
+
 
 class Trainer:
     def __init__(self, learning_rate, batch_size, momentum, num_round, path):
@@ -14,7 +15,7 @@ class Trainer:
         self.trainDao = Dao_CVData(path=path, train=True, batch_size=self.batch_size, shuffle=True, num_worker=0)
 
     def fit(self):
-        net = Net()
+        net = AlexNet()
         criterion = nn.CrossEntropyLoss()
         optimizer = optim.SGD(net.parameters(), lr=self.learning_rate, momentum=self.momentum)
         self.trainDao.load()
@@ -51,7 +52,7 @@ class Trainer:
         print('Finished Training')
         return net
 if __name__ == '__main__':
-    trainer = Trainer(learning_rate=0.0001, batch_size=4, momentum=0.9, num_round=2, path='./dataset/train')
+    trainer = Trainer(learning_rate=0.00001, batch_size=4, momentum=0.9, num_round=2, path='./dataset/train')
     model = trainer.fit()
     model_PATH = './net.pth'
     torch.save(model.state_dict(), model_PATH)
