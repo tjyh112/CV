@@ -25,7 +25,8 @@ class Bottleneck(nn.Module):
 
 
     def forward(self, x):
-        x = x.downsample(x)
-        output = self.relu(self.net(x) + x)
+        temp = x
+        x = self.downsample(x)
+        output = self.relu(self.net(temp) + x)
         return output
 

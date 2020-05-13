@@ -1,16 +1,17 @@
 from Dao_CVData import *
 from AlexNet import *
 from utils import *
+from ResNet import *
 
 class Tester:
-    def __init__(self, path, model, classes):
+    def __init__(self, path, model):
         super()
         self.model = model
         self.path = path
-        self.classes = classes
         testDao = Dao_CVData(path=path, train=False, batch_size=4, shuffle=True, num_worker=0)
         testDao.load()
         self.testloader = testDao.dataloader
+        self.classes = testDao.classes
 
 
 
@@ -25,8 +26,8 @@ class Tester:
 
             outputs = self.model(images)
             _, predicted = torch.max(outputs, 1)
-            print('ground truth:', ' '.join('%5s' % classes[labels[j]] for j in range(4)))
-            print('prediction:', ' '.join('%5s' % classes[predicted[j]] for j in range(4)))
+            print('ground truth:', ' '.join('%5s' % self.classes[labels[j]] for j in range(4)))
+            print('prediction:', ' '.join('%5s' % self.classes[predicted[j]] for j in range(4)))
             imshow(torchvision.utils.make_grid(images))
             n -= 1
 
@@ -47,7 +48,7 @@ class Tester:
                 output = list(outputs[j])
                 predict = output.index(max(output))
                 print('ground truth:', ' '.join('%5s,  ' % t))
-                print('prediction:', ' '.join('%5s  ' % classes[predict]))
+                print('prediction:', ' '.join('%5s  ' % self.classes[predict]))
                 image = images[j]
                 imshow(torchvision.utils.make_grid(image))
                 n -= 1
@@ -72,7 +73,7 @@ class Tester:
 
                 # save img
                 for i, image in enumerate(images):
-                    imsave(image, self.path, classes[predicted[i]])
+                    imsave(image, self.path, self.classes[predicted[i]])
         print('Accuracy of the network on the  test images: %d %%' % (
                 100 * correct / total))
 
@@ -97,7 +98,7 @@ class Tester:
 
         for i in range(6):
             print('Accuracy of %5s : %2d %%' % (
-                classes[i], 100 * class_correct[i] / class_total[i]))
+                self.classes[i], 100 * class_correct[i] / class_total[i]))
 
 if __name__ == '__main__':
     # trainer = Trainer(learning_rate=0.001, momentum=0.9, num_round=2, path='./data')
@@ -108,12 +109,12 @@ if __name__ == '__main__':
     # if os.path.exists("./dataset/test/predictions"):
     #     os.remove("./dataset/test/predictions/*.jpg")
     #     os.rmdir(("./dataset/test/predictions/"))
-    classes = ['Car', 'Motor', 'Background', 'Face', 'Airplane', 'Leaf']
+    # classes = ['Car', 'Motor', 'Background', 'Face', 'Airplane', 'Leaf']
     model = AlexNet()
     model_PATH = './net.pth'
     model.load_state_dict(torch.load(model_PATH))
-    tester = Tester(path='./dataset/test', model=model, classes=classes)
+    tester = Tester(path='./dataset/test', model=model)
         # tester.show_n_batch_prediction(5)
         # tester.show_n_batch_type_specified_prediction(10, 'Background')
     tester.accuracy()
-    tester.single_accuracy()
+    # tester.single_accuracy()

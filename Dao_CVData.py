@@ -29,6 +29,7 @@ class Dao_CVData():
         self.dataset = CVData(path=self.path, transform=self.transform, train=self.train)
         self.dataloader = torch.utils.data.DataLoader(dataset=self.dataset, batch_size=self.batch_size, shuffle=self.shuffle,
                                                       num_workers=self.num_worker)
+        self.classes = self.dataset.classes
 
 if __name__ == '__main__':
 

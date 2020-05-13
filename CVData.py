@@ -24,7 +24,9 @@ class CVData(Dataset):
         self.data = []
         self.targets = []
         self.folders = get_folders(self.path)
+        self.classes = get_class_names(self.path)
         self.load_data()
+
 
 
     def resize(self, path):
@@ -62,6 +64,9 @@ class CVData(Dataset):
             label = np.array([i for _ in range(array.shape[0])])
             data = np.append(data, array, axis=0)
             targets = np.append(targets, label, axis=0)
+
+
+
 
         # car_collection = imread_collection(car_path)
         # motorbike_collection = imread_collection(motorbike_path)

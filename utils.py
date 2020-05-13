@@ -51,5 +51,12 @@ def get_folders(path):
         result.append(path+'/'+entry.name)
     return result
 
+def get_class_names(path):
+
+    result = []
+    for entry in os.scandir(path):
+        result.append(str(entry.name))
+    return result
+
 if __name__ == '__main__':
     print(get_folders('./dataset/train'))

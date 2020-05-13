@@ -3,7 +3,7 @@ from CVData import *
 from AlexNet import *
 import torch.optim as optim
 from Dao_CVData import *
-
+from ResNet import*
 
 class Trainer:
     def __init__(self, learning_rate, batch_size, momentum, num_round, path):
@@ -52,7 +52,8 @@ class Trainer:
         print('Finished Training')
         return net
 if __name__ == '__main__':
-    trainer = Trainer(learning_rate=0.00001, batch_size=4, momentum=0.9, num_round=2, path='./dataset/train')
+    # lr = pow(10,-5) when using AlexNet, lr = pow(10,-6) when using ResNet reaching the best
+    trainer = Trainer(learning_rate=pow(10,-5), batch_size=4, momentum=0.9, num_round=2, path='./dataset/train')
     model = trainer.fit()
     model_PATH = './net.pth'
     torch.save(model.state_dict(), model_PATH)
