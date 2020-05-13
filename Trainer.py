@@ -1,6 +1,6 @@
 
 from CVData import *
-from Net import *
+from AlexNet import *
 import torch.optim as optim
 from Dao_CVData import *
 
